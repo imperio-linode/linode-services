@@ -1,0 +1,9 @@
+image = "IMAGE_SED"
+ssh = [ "SSH_SED" ]
+token = "TOKEN_SED"
+label = "LABEL_SED"
+group = "GROUP_SED"
+region = "REGION_SED"
+type = "TYPE_SED"
+authorized_keys = "KEYS_SED"
+root_pass = "ROOT_PASS_SED"
