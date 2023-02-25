@@ -1,0 +1,18 @@
+{
+  "name": "linode-services",
+  "version": "0.0.1-SNAPSHOT",
+  "private": true,
+  "scripts": {
+    "serve": "nodemon bin/conn"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~4.3.4",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "helmet": "^6.0.1",
+    "kill-port": "2.0.1",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.20"
+  }
+}

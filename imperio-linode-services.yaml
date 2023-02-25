@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: imperio-linode-services
+  name: imperio-linode-services
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: imperio-linode-services
+  strategy: { }
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: imperio-linode-services
+    spec:
+      containers:
+        - image: finda/imperio-linode-services
+          imagePullPolicy: Always
+          name: imperio-linode-services
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: imperio-linode-services
+spec:
+  ports:
+    - port: 8000
+      targetPort: 80
+      name: conn
+  selector:
+    app: imperio-linode-services
+---
+

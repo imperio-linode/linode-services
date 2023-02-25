@@ -1,0 +1,87 @@
+#!/usr/local/bin node
+
+console.log("Loading routes...")
+const app = require('../app/router');
+// console.log("Loading debug...")
+// const debug = require('debug')('linode-services:conn');
+console.log("oading http...")
+const http = require('http');
+// console.log("Loading fs...")
+// const fs = require("fs");
+// console.log("Loading tls...")
+// const tls = require('node:tls');
+console.log("Loading helmet...")
+const helmet = require("helmet");
+console.log("All libs loaded.")
+
+// console.log(__dirname + ": here")
+const relativePath = command => {
+    return require('path').resolve(__dirname, command)
+}
+
+const options = {
+    // key: fs.readFileSync(relativePath("../app/resources/linode-services.imperio.key")),
+    // cert: fs.readFileSync(relativePath("../app/resources/linode-services.imperio.crt"))
+    // key: fs.readFileSync("app/resources/linode-services.imperio.key"),
+    // cert: fs.readFileSync("app/resources/linode-services.imperio.crt")
+};
+
+let port = normalizePort(process.env.PORT || '80');
+
+app.use(helmet)
+
+const server = http.createServer(options, app);
+
+server.listen(port);
+console.log("Starting app...." + __dirname + " " + port)
+console.log("\x1b[33m \n\t [Imperio Linode Services starting on " + port + "] \x1b[0m",);
+
+server.on('error', onError);
+server.on('listening', onListening);
+
+function normalizePort(val) {
+    const port = parseInt(val, 10);
+
+    if (isNaN(port)) {
+        return val;
+    }
+
+    if (port >= 0) {
+        return port;
+    }
+
+    return false;
+}
+
+function onError(error) {
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
+
+    const bind = typeof port === 'string'
+        ? 'Pipe ' + port
+        : 'Port ' + port;
+
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges');
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
+}
+
+function onListening() {
+    const addr = server.address();
+    const bind = typeof addr === 'string'
+        ? 'pipe ' + addr
+        : 'port ' + addr.port;
+    console.log("\x1b[33m \n\t [Imperio Linode Services listening on " + bind + "] \x1b[0m",);
+}
+
+

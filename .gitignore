@@ -1,0 +1,7 @@
+node_modules
+.kpt-pipeline
+
+/app/resources/*.crt
+/app/resources/*.csr
+/app/resources/*.key
+
