@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const Logger = require("../utils/Logger");
 
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  console.log("got")
+  Logger.infob("got")
+  Logger.log(req.keys)
   res.send('respond with a resource');
 });
 

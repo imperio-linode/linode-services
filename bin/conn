@@ -1,16 +1,18 @@
 #!/usr/local/bin node
 
-console.log("Loading routes....")
+const Logger = require("../app/utils/Logger")
+
+Logger.info("Loading routes....")
 const app = require('../app/router');
-console.log("Loading http...")
+Logger.info("Loading http...")
 const http = require('http');
-console.log("Loading fs...")
+Logger.info("Loading fs...")
 const fs = require("fs");
-// console.log("Loading tls...")
+// Logger.info("Loading tls...")
 // const tls = require('node:tls');
-console.log("Loading helmet...")
+Logger.info("Loading helmet...")
 const helmet = require("helmet");
-console.log("All libs loaded.")
+Logger.success("All libs loaded. \t\t\t\t\t[✓]")
 
 const relativePath = command => {
     return require('path').resolve(__dirname, command)
@@ -30,8 +32,8 @@ app.use(helmet)
 const server = http.createServer(options, app);
 
 server.listen(port);
-// console.log("Starting app...." + __dirname + " " + port)
-// console.log("\x1b[33m \n\t [Imperio Linode Services starting on " + port + "] \x1b[0m",);
+// Logger.info("Starting app...." + __dirname + " " + port)
+// Logger.info("\x1b[33m \n\t [Imperio Linode Services starting on " + port + "] \x1b[0m",);
 
 server.on('error', onError);
 server.on('listening', onListening);
@@ -78,7 +80,7 @@ function onListening() {
     const bind = typeof addr === 'string'
         ? 'pipe ' + addr
         : 'port ' + addr.port;
-    console.log("\x1b[33m \n\t [Imperio Linode Services listening on " + bind + "] \x1b[0m",);
+    Logger.successb("Imperio Linode Services listening on " + bind + "\t[✓]")
 }
 
 
