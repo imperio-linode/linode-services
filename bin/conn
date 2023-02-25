@@ -2,35 +2,32 @@
 
 console.log("Loading routes....")
 const app = require('../app/router');
-// console.log("Loading debug...")
-// const debug = require('debug')('linode-services:conn');
 console.log("Loading http...")
 const http = require('http');
-// console.log("Loading fs...")
-// const fs = require("fs");
+console.log("Loading fs...")
+const fs = require("fs");
 // console.log("Loading tls...")
 // const tls = require('node:tls');
 console.log("Loading helmet...")
 const helmet = require("helmet");
 console.log("All libs loaded.")
 
-// console.log(__dirname + ": here")
 const relativePath = command => {
     return require('path').resolve(__dirname, command)
 }
 
 const options = {
-    // key: fs.readFileSync(relativePath("../app/resources/linode-services.imperio.key")),
-    // cert: fs.readFileSync(relativePath("../app/resources/linode-services.imperio.crt"))
-    // key: fs.readFileSync("app/resources/linode-services.imperio.key"),
-    // cert: fs.readFileSync("app/resources/linode-services.imperio.crt")
+    key: fs.readFileSync(relativePath("../app/resources/imperio.key")),
+    cert: fs.readFileSync(relativePath("../app/resources/imperio.crt")),
+    ca: true
+
 };
 
 let port = normalizePort(process.env.PORT || '80');
 
 app.use(helmet)
 
-const server = http.createServer(app);
+const server = http.createServer(options, app);
 
 server.listen(port);
 // console.log("Starting app...." + __dirname + " " + port)
