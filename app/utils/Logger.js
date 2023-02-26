@@ -1,23 +1,24 @@
 
 const makeLog = txt => {
-    return '[' + new Date().toString().split(" GMT")[0] +'] ' + (txt || '');
+    return '[' + new Date().toString().split(" GMT")[0] +'] ' + (txt || 'No log provided');
 }
 
 const log = txt => {
-    console.log( log(txt) || '')
+    console.log( log(txt) || 'No log provided')
 }
 const success = txt => {
-    console.log(colour("green", makeLog(txt) || ''))
+    console.log(colour("green", makeLog(txt) || 'No log provided'))
 }
 const successb = txt => {
-    console.log(colour("greenb", makeLog(txt) || ''))
+    console.log(colour("greenb", makeLog(txt) || 'No log provided'))
 }
 function info(txt) {
-    console.log(colour("yellow", makeLog(txt) || ''))
+    console.log(colour("yellow", makeLog(txt) || 'No log provided'))
 }
 function infob(txt) {
-    console.log(colour("yellowb", makeLog(txt) || ''))
+    console.log(colour("yellowb", makeLog(txt) || 'No log provided'))
 }
+
 
 
 module.exports = {

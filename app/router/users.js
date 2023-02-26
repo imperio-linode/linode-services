@@ -3,11 +3,17 @@ const Router = Express.Router();
 const Logger = require("../utils/Logger");
 
 
-/* GET users listing. */
-Router.get('/b', function(req, res, next) {
+Router.get('/a', function(req, res, next) {
   Logger.info("Got request")
-  Logger.log(req.body["test"])
-  res.send({elo: "elob"});
+  // Logger.log(req.body)
+  res.send({elo: "eloa"});
 });
 
-module.exports = () => Router;
+Router.post('/b', function(req, res, next) {
+  Logger.info("Got request")
+  console.log(req.body)
+  Logger.infob(req.body)
+  res.send({elo: "eloa"});
+});
+
+module.exports = Router;
