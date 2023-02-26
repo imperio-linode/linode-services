@@ -8,9 +8,8 @@ Router.get('/test', function(req, res, next) {
 });
 
 Router.get('/a', function(req, res, next) {
-  console.log("test")
   Logger.info("Got request")
-  Logger.log(req.hostname)
+  // Logger.log(req.body)
   res.send({elo: "eloa"});
 });
 

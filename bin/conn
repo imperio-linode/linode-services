@@ -32,7 +32,7 @@ const options = {
 
 let port = normalizePort(process.env.PORT || '80');
 
-app.use(helmet)
+app.use(helmet())
 
 const server = http.createServer(options, app);
 

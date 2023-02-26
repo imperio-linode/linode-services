@@ -6,7 +6,7 @@ const Logger = require("../utils/Logger");
 /* GET users listing. */
 Router.get('/b', function(req, res, next) {
   Logger.info("Got request")
-  Logger.log(req.hostname)
+  Logger.log(req.body["test"])
   res.send({elo: "elob"});
 });
 
