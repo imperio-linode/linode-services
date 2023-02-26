@@ -1,7 +1,7 @@
 FROM node:19
 WORKDIR /work
 
-COPY package.json app.js run.sh ./
+COPY package.json app.js ./
 COPY app/ app
 COPY public/ public
 COPY bin/ bin
