@@ -20,4 +20,11 @@ Router.post('/b', function(req, res, next) {
   res.send({elo: "eloa"});
 });
 
+Router.post('/add-engine', function(req, res, next) {
+  Logger.info("Got request")
+  console.log(req.body)
+  Logger.infob(req.body)
+  res.send({value: "eloa"});
+});
+
 module.exports = Router;
