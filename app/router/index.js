@@ -1,14 +1,18 @@
 const express = require('express');
-const router = express.Router();
+const Router = express.Router();
+const Logger = require('../utils/Logger')
 
 /* GET home page. */
-router.get('/test', function(req, res, next) {
+Router.get('/test', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/', function(req, res, next) {
-  res.send({elo: "elo"});
+Router.get('/a', function(req, res, next) {
+  console.log("test")
+  Logger.info("Got request")
+  Logger.log(req.hostname)
+  res.send({elo: "eloa"});
 });
 
 
-module.exports = router;
+module.exports = Router;

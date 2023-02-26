@@ -1,13 +1,13 @@
-const express = require('express');
-const router = express.Router();
+const Express = require('express');
+const Router = Express.Router();
 const Logger = require("../utils/Logger");
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  Logger.infob("got")
-  Logger.log(req.keys)
-  res.send('respond with a resource');
+Router.get('/b', function(req, res, next) {
+  Logger.info("Got request")
+  Logger.log(req.hostname)
+  res.send({elo: "elob"});
 });
 
-module.exports = router;
+module.exports = () => Router;
