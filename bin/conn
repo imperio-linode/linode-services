@@ -1,46 +1,53 @@
 #!/usr/local/bin node
 
 const Logger = require("../app/utils/Logger")
-
 Logger.info("Loading routes....")
 const app = require('../app');
 
 Logger.info("Loading http...")
 const http = require('http');
 
+Logger.info("Loading https...")
+const https = require('https');
+
 Logger.info("Loading fs...")
 const fs = require("fs");
 
-// Logger.info("Loading tls...")
-// const tls = require('node:tls');
-
 Logger.info("Loading helmet...")
 const helmet = require("helmet");
+app.use(helmet())
 
 Logger.success("All libs loaded. \t\t\t\t\t[✓]")
+console.log("\n")
+
+
 
 const relativePath = command => {
     return require('path').resolve(__dirname, command)
 }
 
 const options = {
-    key: fs.readFileSync(relativePath("../app/resources/imperio.key")),
-    cert: fs.readFileSync(relativePath("../app/resources/imperio.crt")),
-    ca: true
-
+    key: fs.readFileSync(relativePath("../app/resources/linode-services.imperio.key")).toString(),
+    cert: fs.readFileSync(relativePath("../app/resources/linode-services.imperio.crt")).toString(),
+    ca: fs.readFileSync(relativePath("../app/resources/imperio.crt")).toString()
 };
 
 let port = normalizePort(process.env.PORT || '80');
+let securePort = normalizePort(process.env.PORT || '443');
 
-app.use(helmet())
 
-const server = http.createServer(options, app);
+const server = http.createServer(app);
+const secureServer = https.createServer(options, app);
 
 server.listen(port);
-Logger.info("Starting app...." + __dirname + " " + port)
+secureServer.listen(securePort);
 
-server.on('error', onError);
+Logger.info("Starting app...")
+
+secureServer.on('listening', onListeningSecure);
 server.on('listening', onListening);
+secureServer.on('error', onError);
+server.on('error', onError);
 
 function normalizePort(val) {
     const port = parseInt(val, 10);
@@ -86,5 +93,14 @@ function onListening() {
         : 'port ' + addr.port;
     Logger.successb("Imperio Linode Services listening on " + bind + "\t[✓]")
 }
+
+function onListeningSecure() {
+    const addrSecure = secureServer.address();
+    const bindSecure = typeof addrSecure === 'string'
+        ? '' + addrSecure
+        : '' + addrSecure.port;
+    Logger.successb("Imperio Linode Services listening secure on " + bindSecure + "\t[✓]")
+}
+
 
 
