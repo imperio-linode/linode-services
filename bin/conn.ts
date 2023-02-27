@@ -2,7 +2,7 @@
 
 import Logger from "../app/utils/Logger"
 import {relativePath} from "../app/utils/Utils"
-import { app } from './app'
+import {app} from './app'
 import * as http from 'http'
 import * as https from 'https'
 import * as fs from "fs"
@@ -20,7 +20,7 @@ const options = {
     cert: fs.readFileSync(relativePath("../resources/linode-services.imperio.crt")).toString(),
     ca: fs.readFileSync(relativePath("../resources/imperio.crt")).toString()
 }
-Logger.info("TLS certs loaded checker: key" + options.key.split(" ")[0] +  " cert" + options.cert.split(" ")[0] + " ca" + options.ca.split(" ")[0])
+Logger.info("TLS certs loaded checker: key" + options.key.split(" ")[0] + " cert" + options.cert.split(" ")[0] + " ca" + options.ca.split(" ")[0])
 
 const port = normalizePort(process.env.PORT || '80')
 const securePort = normalizePort(process.env.PORTSECURE || '443')
