@@ -8,14 +8,7 @@ build:
     - image: finda/imperio-linode-services
       docker:
         dockerfile: Dockerfile
-#      sync:
-#        infer:
-#          - 'app/*'
-#          - 'work/*'
-#          - 'public/*'
-#          - 'bin/*'
-#          - 'package.json'
-#          - 'app.js'
+
 manifests:
   rawYaml:
     - imperio-linode-services.yaml

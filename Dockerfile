@@ -1,19 +1,11 @@
 FROM node:19
 WORKDIR /work
 
-COPY package.json app.js ./
+COPY package.json tsconfig.json ./
 COPY app/ app
 COPY public/ public
 COPY bin/ bin
-
 RUN ["npm", "install"]
 RUN ["npm", "install", "-g", "nodemon"]
-
-#RUN ["chmod", "+x", "/work/bin/conn"]
-RUN ["echo", "Hello World"]
-RUN ["pwd"]
-RUN ["ls"]
-
-ENTRYPOINT ["nodemon", "bin/conn"]
-#ENTRYPOINT ["npm", "run-script", "serve"]
-
+RUN ["npx", "tsc"]
+ENTRYPOINT ["nodemon", "--watch", "./bin", "--ext", "js,json", "bin/conn.js"]

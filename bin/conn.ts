@@ -1,18 +1,14 @@
 #!/usr/local/bin node
 
-const Logger = require("../app/utils/Logger")
-const {relativePath} = require("../app/utils/Utils")
+import Logger from "../app/utils/Logger"
+import {relativePath} from "../app/utils/Utils"
+import { app } from './app'
+import * as http from 'http'
+import * as https from 'https'
+import * as fs from "fs"
+import helmet from "helmet"
 
 Logger.info("Loading routes....")
-const app = require('../app')
-Logger.info("Loading http...")
-const http = require('http')
-Logger.info("Loading https...")
-const https = require('https')
-Logger.info("Loading fs...")
-const fs = require("fs")
-Logger.info("Loading helmet...")
-const helmet = require("helmet")
 app.use(helmet())
 
 Logger.success("All libs loaded. \t\t\t\t\t[✓]")
@@ -26,8 +22,8 @@ const options = {
 }
 Logger.info("TLS certs loaded checker: key" + options.key.split(" ")[0] +  " cert" + options.cert.split(" ")[0] + " ca" + options.ca.split(" ")[0])
 
-let port = normalizePort(process.env.PORT || '80')
-let securePort = normalizePort(process.env.PORT || '443')
+const port = normalizePort(process.env.PORT || '80')
+const securePort = normalizePort(process.env.PORTSECURE || '443')
 Logger.info("Setting ports to: " + port + " / " + securePort)
 
 console.log("\n")
@@ -42,7 +38,7 @@ server.on('listening', onListening)
 secureServer.on('error', onError)
 server.on('error', onError)
 
-function normalizePort(val) {
+function normalizePort(val: string) {
     const port = parseInt(val, 10)
 
     if (isNaN(port)) return val
@@ -50,7 +46,7 @@ function normalizePort(val) {
     else return false
 }
 
-function onError(error) {
+function onError(error: any) {
     if (error.syscall !== 'listen') {
         throw error
     }
@@ -88,5 +84,3 @@ function onListeningSecure() {
         : '' + addrSecure.port
     Logger.successb("Imperio Linode Services listening secure on " + bindSecure + "\t[✓]")
 }
-
-

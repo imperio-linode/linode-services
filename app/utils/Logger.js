@@ -19,7 +19,6 @@ function infob(txt) {
     console.log(colour("yellowb", makeLog(txt) || 'No log provided'))
 }
 
-
 module.exports = {
     info,
     success,
