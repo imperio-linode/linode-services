@@ -1,3 +1,4 @@
+import {colors} from "../cloud/object/Constants";
 
 class Logger {
     static makeLog(txt?: string): string {
@@ -25,16 +26,7 @@ class Logger {
     }
 
     static colour(c: string, str: string): string {
-        const colours: { [key: string]: string } = {
-            "red": "\x1B[31m",
-            "yellow": "\x1B[33m",
-            "yellowb": "\x1B[1;33m",
-            "greenb": "\x1B[1;32m",
-            "green": "\x1B[32m",
-            "black": "\x1B[39m",
-            "close": "\x1B[0m"
-        };
-        return (colours[c]) + str + colours.close;
+        return (colors[c]) + str + colors.close;
     }
 }
 

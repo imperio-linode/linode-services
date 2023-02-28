@@ -5,3 +5,5 @@ node_modules
 /app/resources/*.csr
 /app/resources/*.key
 
+skaffold.yaml
+run.sh

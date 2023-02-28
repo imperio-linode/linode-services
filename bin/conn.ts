@@ -1,7 +1,7 @@
 #!/usr/local/bin node
 
 import Logger from "../app/utils/Logger"
-import {relativePath} from "../app/utils/Utils"
+import {fileToString, relativePath} from "../app/utils/Utils"
 import {app} from './app'
 import * as http from 'http'
 import * as https from 'https'
@@ -16,9 +16,9 @@ Logger.infob("Starting app...")
 
 Logger.info("Loading TLS certs...")
 const options = {
-    key: fs.readFileSync(relativePath("../resources/linode-services.imperio.key")).toString(),
-    cert: fs.readFileSync(relativePath("../resources/linode-services.imperio.crt")).toString(),
-    ca: fs.readFileSync(relativePath("../resources/imperio.crt")).toString()
+    key: fileToString("../resources/linode-services.imperio.key"),
+    cert: fileToString("../resources/linode-services.imperio.crt"),
+    ca: fileToString("../resources/imperio.crt")
 }
 Logger.info("TLS certs loaded checker: key" + options.key.split(" ")[0] + " cert" + options.cert.split(" ")[0] + " ca" + options.ca.split(" ")[0])
 

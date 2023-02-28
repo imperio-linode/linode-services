@@ -1,8 +1,9 @@
 FROM node:19
 WORKDIR /work
 
-RUN echo $LINODE_TOKEN
-RUN echo ${LINODE_TOKEN}
+ARG TOKEN
+RUN echo $TOKEN
+RUN echo ${TOKEN}
 
 COPY package.json tsconfig.json ./
 COPY app/ app

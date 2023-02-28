@@ -40,4 +40,7 @@ When IP is obtained, edit /etc/hosts and add/ < ip > 	x.imperio where x is name 
 
 3. Apply [imperio-linode-services](imperio-linode-services.yaml) file via kubectl apply -f
 
+### Known bugs
 
+`Watching for changes... ` stuck -> This is resolved by commenting or uncommenting (and letting it be like that) `sync`
+object in skaffold.yaml

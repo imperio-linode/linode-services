@@ -7,8 +7,8 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const morgan_1 = __importDefault(require("morgan"));
-const router_1 = __importDefault(require("../app/router"));
-const users_1 = __importDefault(require("../app/router/users"));
+const router_1 = __importDefault(require("../app/routes"));
+const users_1 = __importDefault(require("../app/routes/users"));
 const app = (0, express_1.default)();
 // Setup
 app.use((0, morgan_1.default)('dev'));

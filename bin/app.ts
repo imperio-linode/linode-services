@@ -2,8 +2,8 @@ import Express, { Application } from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import indexRouter from "../app/router";
-import usersRouter from "../app/router/users";
+import indexRouter from "../app/routes";
+import usersRouter from "../app/routes/users";
 
 const app: Application = Express();
 
