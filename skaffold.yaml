@@ -8,6 +8,8 @@ build:
     - image: finda/imperio-linode-services
       docker:
         dockerfile: Dockerfile
+        buildArgs:
+          LINODE_TOKEN: linode_token_sed
 #      sync:
 #        infer:
 #          - 'app/*'

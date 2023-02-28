@@ -25,12 +25,12 @@ Tests via Skaffold.
 
 1. Run docker, and kubernetes cluster and have it configured in/ ~/.kube/config. Rancher desktop is recommended as it runs both. Important note, is to have Traefik disabled here.
 
-2. Change [application.yml](src/main/resources/application.yml) to match current infrastructure.
+2. Change [application.yml](src/main/resources/application.yml) to match current infrastructure. Also need to manually add in linode token in [linode.txt](./app/resources/linode.txt)
 
 3. Look for istio gateway external ip. Get it by using use kubectl get svc -n istio-system
 When IP is obtained, edit /etc/hosts and add/ < ip > 	x.imperio where x is name of services that are to be used, ie. for gateway/ 192.168.0.227	gateway.imperio
 
-3. Hit `skaffold dev` command and wait for spring app to start in pod
+3. Hit `sh ./run-local.sh <linode_token>` command and wait for spring app to start in pod
 
 `npm run-script serve`
 ### Cloud Deployment

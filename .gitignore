@@ -4,5 +4,4 @@ node_modules
 /app/resources/*.crt
 /app/resources/*.csr
 /app/resources/*.key
-/app/resources/linode.txt
 
