@@ -1,4 +1,5 @@
 #!/bin/bash
+#Always run with first arg as token sh ./run-local.container.sh token
 
 argToken=$1
 

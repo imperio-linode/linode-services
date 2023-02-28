@@ -1,5 +1,5 @@
 #!/bin/bash
-#Script to run local skaffold
+#Always run with first arg as token sh ./run-local.skaffold.sh token
 
 argToken=$1
 
