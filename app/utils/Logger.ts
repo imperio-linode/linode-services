@@ -1,5 +1,6 @@
 import {colors} from "../cloud/object/Constants";
 
+
 class Logger {
     static makeLog(txt?: string): string {
         return `[${new Date().toString().split(" GMT")[0]}] ${txt || 'No log provided'}`;

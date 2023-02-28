@@ -1,19 +1,35 @@
+export {
+    files,
+    host,
+    endpoints,
+    linodeApi,
+    colors
+};
+
+//todo: lmao... redux lets go?
 const files = {
     linodeApiToken: "../resources/linode.txt"
 }
 
+const linodeApiVersion = "v4";
+
 const host = {
     gateway: "https://gateway.imperio",
-    instances: "https://instances.imperio"
-}
-const endpoints = {
-    addEngine: "/add-engine",
+    instances: "https://instances.imperio",
+    linode: "https://api.linode.com/" + linodeApiVersion,
+
 }
 
-const linodeApiVersion = "v4";
+const endpoints = {
+    empty: "/",
+    addEngine: "/add-engine",
+    account: "/account",
+    linodeIncoming: "/l"
+}
+
 const linodeApi = {
-    host: "https://api.linode.com/" + linodeApiVersion,
-    account: "/account"
+    account: "/account",
+    instances: "/instances"
 }
 
 const colors = {
@@ -25,11 +41,3 @@ const colors = {
     black: "\x1B[39m",
     close: "\x1B[0m"
 }
-
-export {
-    files,
-    host,
-    endpoints,
-    linodeApi,
-    colors
-};

@@ -1,20 +1,16 @@
 #!/usr/local/bin node
 
+
 import Logger from "../app/utils/Logger"
 import {fileToString, relativePath} from "../app/utils/Utils"
 import {app} from './app'
 import * as http from 'http'
 import * as https from 'https'
-import * as fs from "fs"
 import helmet from "helmet"
-
-Logger.info("Loading routes....")
 app.use(helmet())
-
 Logger.success("All libs loaded. \t\t\t\t\t[✓]")
-Logger.infob("Starting app...")
 
-Logger.info("Loading TLS certs...")
+
 const options = {
     key: fileToString("../resources/linode-services.imperio.key"),
     cert: fileToString("../resources/linode-services.imperio.crt"),
@@ -24,19 +20,18 @@ Logger.info("TLS certs loaded checker: key" + options.key.split(" ")[0] + " cert
 
 const port = normalizePort(process.env.PORT || '80')
 const securePort = normalizePort(process.env.PORTSECURE || '443')
-Logger.info("Setting ports to: " + port + " / " + securePort)
-
 console.log("\n")
 
 const server = http.createServer(app)
 const secureServer = https.createServer(options, app)
+
 server.listen(port)
 secureServer.listen(securePort)
-
 secureServer.on('listening', onListeningSecure)
 server.on('listening', onListening)
 secureServer.on('error', onError)
 server.on('error', onError)
+
 
 function normalizePort(val: string) {
     const port = parseInt(val, 10)

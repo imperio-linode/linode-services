@@ -8,7 +8,6 @@ router.get('/test', function (req, res, next) {
 });
 router.get('/a', function (req, res, next) {
     (0, Logger_1.info)("Got request");
-    // Logger.log(req.body)
     res.send({ elo: "eloa" });
 });
 router.post('/add-engine', function (req, res, next) {
