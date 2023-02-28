@@ -3,6 +3,6 @@
 
 argToken=$1
 
-sed -i '' "s/linode_token_sed/$argToken/g" skaffold.yaml
+sed -i '' "s/TOKEN_SED/$argToken/g" skaffold.yaml
 skaffold dev
 

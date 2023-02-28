@@ -9,7 +9,7 @@ build:
       docker:
         dockerfile: Dockerfile
         buildArgs:
-          LINODE_TOKEN: linode_token_sed
+         TOKEN: TOKEN_SED
 #      sync:
 #        infer:
 #          - 'app/*'
