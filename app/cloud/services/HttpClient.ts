@@ -34,18 +34,18 @@ class ServiceClient implements Client {
 
 export class Linode extends ServiceClient {
     constructor(token) {
-        super(token, host.linode);
+        super(token, host.linode)
     }
 }
 
 export class Gateway extends ServiceClient {
     constructor(token) {
-        super(token, host.gateway);
+        super(token, host.gateway)
     }
 }
 
 export class Instances extends ServiceClient {
     constructor(token) {
-        super(token, host.instances);
+        super(token, host.instances)
     }
 }

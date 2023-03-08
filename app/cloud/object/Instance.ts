@@ -56,7 +56,7 @@ class Instance {
         this.last_successful = json.last_successful;
         this.backup_day = json.backup_day;
         this.window = json.window;
-        this.created = new Date(json.created);
+        this.created = new Date(json.created)
         this.group = json.group;
         this.host_uuid = json.host_uuid;
         this.hypervisor = json.hypervisor;
