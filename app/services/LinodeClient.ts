@@ -1,6 +1,6 @@
-import Logger from '../../utils/Logger'
+import Logger from '../utils/Logger'
 import {InstanceRequestSchema} from '../object/InstanceRequest'
-import {fileToString} from "../../utils/Utils"
+import {fileToString} from "../utils/Utils"
 import {files, linodeApi} from "../object/Constants"
 import {Linode} from "./HttpClient";
 

@@ -1,6 +1,6 @@
 import {Router} from "express";
-import LinodeClient from "../cloud/services/LinodeClient"
-import {endpoints} from "../cloud/object/Constants"
+import LinodeClient from "../services/LinodeClient"
+import {endpoints} from "../object/Constants"
 
 
 const router = Router()

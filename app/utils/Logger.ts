@@ -1,4 +1,4 @@
-import {colors} from "../cloud/object/Constants";
+import {colors} from "../object/Constants";
 
 
 class Logger {

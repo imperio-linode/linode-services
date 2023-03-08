@@ -1,6 +1,6 @@
 import axios from "axios";
 import {host} from "../object/Constants";
-import Logger from "../../utils/Logger";
+import Logger from "../utils/Logger";
 
 
 interface endpointToRequest {
