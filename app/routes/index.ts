@@ -5,12 +5,12 @@ import {endpoints} from "../object/Constants"
 
 
 const router = Router()
-const terraform = new LinodeClient()
+const linode = new LinodeClient()
 
 router.post(endpoints.addEngine, function(req, res, next) {
   Object.keys(req.body).forEach(Logger.info)
   Logger.info("Image: " + req.body['image'])
-  terraform.createSingleInstance(req.body)
+  linode.createSingleInstance(req.body)
   res.send(req.body)
 })
 

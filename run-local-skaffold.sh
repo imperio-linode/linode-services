@@ -1,5 +1,5 @@
 #!/bin/bash
-#Always run with first arg as token sh ./run-local.skaffold.sh token
+#Always run with first arg as token sh ./run-local.skaffold.sh token until it gets fixed to use redux
 
 argToken=$1
 

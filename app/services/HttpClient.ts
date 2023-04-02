@@ -30,21 +30,30 @@ class ServiceClient implements Client {
             }
         })
     }
+
+    post = (resource: string, data: object) => {
+        const str: string = this.token
+        return axios.post(this.host + resource, data, {
+            headers: {
+                'Authorization': str
+            }
+        })
+    }
 }
 
-export class Linode extends ServiceClient {
+export class LinodeHttp extends ServiceClient {
     constructor(token) {
         super(token, host.linode)
     }
 }
 
-export class Gateway extends ServiceClient {
+export class GatewayHttp extends ServiceClient {
     constructor(token) {
         super(token, host.gateway)
     }
 }
 
-export class Instances extends ServiceClient {
+export class InstancesHttp extends ServiceClient {
     constructor(token) {
         super(token, host.instances)
     }
