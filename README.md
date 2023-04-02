@@ -1,6 +1,6 @@
 # Imperio Linode Services
 
-## THIS IS HEAVILY UNDER WORK
+## THIS IS HEAVILY UNDER WORK and will be for some time
 ### Aim
 
 Imperio Linode Services is service meant to proc desired terraform deployments based on incoming requests.
