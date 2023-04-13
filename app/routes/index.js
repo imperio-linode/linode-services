@@ -10,7 +10,7 @@ router.get('/a', (req, res, next) => {
     (0, Logger_1.info)("Got request")
     res.send({ elo: "eloa" })
 })
-router.post('/add-engine', (req, res, next) => {
+router.post('/engine/add', (req, res, next) => {
     (0, Logger_1.info)("Got request")
     (0, Logger_1.infob)(Object.keys(req.body))
     res.send(req.body)

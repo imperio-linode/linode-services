@@ -1,5 +1,5 @@
 import Logger from '../utils/Logger'
-import {InstanceRequestSchema} from '../object/InstanceRequest'
+import InstanceRequest, {InstanceRequestSchema} from '../object/InstanceRequest'
 import {fileToString} from "../utils/Utils"
 import {files, linodeApi} from "../object/Constants"
 import {LinodeHttp} from "./HttpClient";
@@ -17,7 +17,9 @@ class LinodeClient {
     createSingleInstance = (instance: InstanceRequestSchema) => {
 
         Logger.info("Instance request: " + instance.label + ", " + instance.image)
-
+        this.linode.post(linodeApi.instances, new InstanceRequest(instance)).then(r => {
+            Logger.log("Sent instance request")
+        })
     }
 
     linodeUserInfoDetails = () => {

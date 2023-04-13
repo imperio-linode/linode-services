@@ -22,14 +22,14 @@ const host = {
 
 const endpoints = {
     empty: "/",
-    addEngine: "/add-engine",
+    addEngine: "/engine/add",
     account: "/account",
     linodeIncoming: "/l"
 }
 
 const linodeApi = {
     account: "/account",
-    instances: "/instances"
+    instances: "/linode/instances",
 }
 
 const colors = {

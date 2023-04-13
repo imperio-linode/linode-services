@@ -2,8 +2,6 @@ FROM node:19
 WORKDIR /work
 
 ARG TOKEN
-RUN echo $TOKEN
-RUN echo ${TOKEN}
 
 COPY package.json tsconfig.json ./
 COPY app/ app

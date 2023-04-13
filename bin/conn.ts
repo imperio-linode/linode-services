@@ -69,7 +69,7 @@ function onListening() {
     const bind = typeof addr === 'string'
         ? 'pipe ' + addr
         : 'port ' + addr.port
-    Logger.successb("Imperio Linode Services listening on " + bind + "\t[✓]")
+    Logger.successb("Imperio Linode Services listening on " + bind + "\t[✓]\n")
 }
 
 function onListeningSecure() {

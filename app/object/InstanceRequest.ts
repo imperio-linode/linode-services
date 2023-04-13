@@ -4,16 +4,16 @@ export interface InstanceRequestSchema {
     type: string;
     requestType: string;
     region: string;
-    root_pass: string;
+    rootPass: string;
     label: string;
-    authorized_keys: string[];
+    authorizedKeys: string[];
 }
 
 class InstanceRequest {
     image: string;
     group: string;
     type: string;
-    requestType: string;
+    request_type: string;
     region: string;
     root_pass: string;
     label: string;
@@ -23,11 +23,11 @@ class InstanceRequest {
         this.image = json.image;
         this.group = json.group;
         this.type = json.type;
-        this.requestType = json.requestType;
+        this.request_type = json.requestType;
         this.region = json.region;
-        this.root_pass = json.root_pass;
+        this.root_pass = json.rootPass;
         this.label = json.label;
-        this.authorized_keys = json.authorized_keys;
+        this.authorized_keys = json.authorizedKeys;
     }
 }
 
