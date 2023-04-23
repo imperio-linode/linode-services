@@ -14,16 +14,26 @@ class LinodeClient {
         this.linode = new LinodeHttp(this.linodeToken)
     }
 
-    createSingleInstance = (instance: InstanceRequestSchema) => {
+    createSingleInstance = (instance: InstanceRequestSchema): Promise<{ statusCode: number, body: any }> => {
 
-        Logger.info("Instance request: " + instance.label + ", " + instance.image)
-        this.linode.post(linodeApi.instances, new InstanceRequest(instance)).then(r => {
-            Logger.log("Sent instance request")
-        })
+        return this.linode.post(linodeApi.instances, new InstanceRequest(instance))
+            .then(response => {
+                Logger.log("Sent instance request ")
+                return { statusCode: response.status, body: response.data }
+            })
+            .catch(error => {
+                Logger.err("Error sending instance request: " + error)
+                return { statusCode: error.response.status, body: error.response.data }
+            })
     }
 
     linodeUserInfoDetails = () => {
         return this.linode.get(linodeApi.account)
+            .then(r => r.status)
+            .catch(error => {
+                Logger.err("Error getting linode user info: " + error)
+                error.response.status
+            })
     }
 }
 

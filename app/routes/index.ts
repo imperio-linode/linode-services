@@ -7,11 +7,6 @@ import {endpoints} from "../object/Constants"
 const router = Router()
 const linode = new LinodeClient()
 
-router.post(endpoints.addEngine, function(req, res, next) {
-  Object.keys(req.body).forEach(Logger.info)
-  Logger.info("Image: " + req.body['image'])
-  linode.createSingleInstance(req.body)
-  res.send(req.body)
-})
+
 
 export default router;

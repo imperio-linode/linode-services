@@ -17,14 +17,13 @@ const host = {
     gateway: "https://gateway.imperio",
     instances: "https://instances.imperio",
     linode: "https://api.linode.com/" + linodeApiVersion,
-
 }
 
 const endpoints = {
     empty: "/",
-    addEngine: "/engine/add",
+    addInstance: "/add",
     account: "/account",
-    linodeIncoming: "/l"
+    instance: "/instance"
 }
 
 const linodeApi = {

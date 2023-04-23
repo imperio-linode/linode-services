@@ -17,7 +17,7 @@ app.use(cookieParser())
 
 // Routes
 app.use(indexRouter)
-app.use(endpoints.linodeIncoming, linodeRouter)
+app.use(endpoints.instance, linodeRouter)
 app.use(Express.static(path.join(__dirname, 'public')))
 
 export { app };

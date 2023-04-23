@@ -1,6 +1,7 @@
 import {Router} from "express";
 import LinodeClient from "../services/LinodeClient"
 import {endpoints} from "../object/Constants"
+import Logger from "../utils/Logger";
 
 
 const router = Router()
@@ -16,10 +17,13 @@ router.get(endpoints.account, (req, res, next) => {
         .then(response => res.send(response))
 })
 
-router.get(endpoints.addEngine, (req, res) => {
-    linode.createSingleInstance(req.body)
-    res.send({test: "test"})
-
+router.post(endpoints.addInstance, async (req, res) => {
+    try {
+        const {statusCode} = await linode.createSingleInstance(req.body)
+        res.status(statusCode).send({test: "test"})
+    } catch (error) {
+        res.status(500).send(error)
+    }
 })
 
 

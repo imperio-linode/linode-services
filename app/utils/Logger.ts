@@ -14,6 +14,10 @@ class Logger {
         console.log(Logger.colour("green", Logger.makeLog(txt) || 'No log provided'))
     }
 
+    static err(txt?: string): void {
+        console.log(Logger.colour("red", Logger.makeLog(txt) || 'No log provided'))
+    }
+
     static successb(txt?: string): void {
         console.log(Logger.colour("greenb", Logger.makeLog(txt) || 'No log provided'))
     }
