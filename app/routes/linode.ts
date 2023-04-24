@@ -18,12 +18,8 @@ router.get(endpoints.account, (req, res, next) => {
 })
 
 router.post(endpoints.addInstance, async (req, res) => {
-    try {
-        const {statusCode} = await linode.createSingleInstance(req.body)
-        res.status(statusCode).send({test: "test"})
-    } catch (error) {
-        res.status(500).send(error)
-    }
+        const {statusCode, body} = await linode.createSingleInstance(req.body)
+        res.status(statusCode).send(body)
 })
 
 
