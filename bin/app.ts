@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import indexRouter from "../app/routes";
 import linodeRouter from "../app/routes/linode";
-import {endpoints, linodeApi} from "../app/object/Constants";
+import {endpoints, linodeApi} from "../app/utils/Constants";
 
 
 const app: Application = Express()

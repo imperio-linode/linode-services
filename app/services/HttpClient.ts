@@ -1,5 +1,5 @@
 import axios from "axios";
-import {host} from "../object/Constants";
+import {host} from "../utils/Constants";
 import Logger from "../utils/Logger";
 
 
@@ -34,6 +34,15 @@ class ServiceClient implements Client {
     post = (resource: string, data: object) => {
         const str: string = this.token
         return axios.post(this.host + resource, data, {
+            headers: {
+                'Authorization': str
+            }
+        })
+    }
+
+    delete = (resource: string) => {
+        const str: string = this.token
+        return axios.delete(this.host + resource, {
             headers: {
                 'Authorization': str
             }

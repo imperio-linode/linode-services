@@ -1,4 +1,4 @@
-import {colors} from "../object/Constants";
+import {colors} from "./Constants";
 
 
 class Logger {

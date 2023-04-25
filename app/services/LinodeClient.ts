@@ -1,7 +1,7 @@
 import Logger from '../utils/Logger'
 import InstanceRequest, {InstanceRequestSchema} from '../object/InstanceRequest'
 import {fileToString} from "../utils/Utils"
-import {files, linodeApi} from "../object/Constants"
+import {files, linodeApi} from "../utils/Constants"
 import {LinodeHttp} from "./HttpClient";
 
 
@@ -23,6 +23,18 @@ class LinodeClient {
             })
             .catch(error => {
                 Logger.err("Error sending instance request: " + error)
+                return { statusCode: error.response.status, body: error.response.data }
+            })
+    }
+
+    deleteSingleInstance = (instanceId: string): Promise<{ statusCode: number, body: any }> => {
+        return this.linode.delete(linodeApi.instances + "/" + instanceId)
+            .then(response => {
+                Logger.log("Deleted instance " + instanceId)
+                return { statusCode: response.status, body: response.data }
+            })
+            .catch(error => {
+                Logger.err("Error deleting instance: " + error)
                 return { statusCode: error.response.status, body: error.response.data }
             })
     }
